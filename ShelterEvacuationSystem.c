@@ -22,6 +22,7 @@ void showShelterRanking() {
 
 }
 
+
 int main() {
     int choice;
 
