@@ -168,6 +168,12 @@ float calculateScore(Shelter *shelterPtr) {
     }
 }
 
+void calculateAllScores() {
+    for (int i = 0; i < shelterCount; i++) {
+        Shelter *shelterPtr = &shelters[i];
+        (*shelterPtr).score = calculateScore(shelterPtr);
+    }
+}
 
 void calculateBestRecommendation() {
     
