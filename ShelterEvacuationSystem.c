@@ -204,17 +204,14 @@ void calculateBestRecommendation() {
 
     printScoreBreakdown(bestShelter);
 }
-
+//-----------------------------------------------------
 const char* getStatus(float score) {
     if (score >= 80) {
         return "Recommended";
-    
     } else if (score >= 60) {
         return "Safe";
-    
     } else if (score >= 40) {
         return "Risky";
-    
     } else {
         return "Not Recommended";
     }
@@ -225,15 +222,17 @@ void sortSheltersByScore() {
 
     for (int i = 0; i < shelterCount - 1; i++) {
         for (int j = 0; j < shelterCount - i - 1; j++) {
-            if (shelters[j].score < shelters[j + 1].score) {
-                temp = shelters[j];
-                shelters[j] = shelters[j + 1];
-                shelters[j + 1] = temp;
+            Shelter *currentShelter = &shelters[j];
+            Shelter *nextShelter = &shelters[j + 1];
+
+            if ((*currentShelter).score < (*nextShelter).score) {
+                temp = *currentShelter;
+                *currentShelter = *nextShelter;
+                *nextShelter = temp;
             }
         }
     }
 }
-
 
 void showShelterRanking() {
     if (shelterCount == 0) {
@@ -252,12 +251,13 @@ void showShelterRanking() {
     printf("\n=== SHELTER RANKING ===\n");
 
     for (int i = 0; i < shelterCount; i++) {
-        printf("\n%d. %s\n", i + 1, shelters[i].name);
-        printf("Score : %.2f\n", shelters[i].score);
-        printf("Status: %s\n", getStatus(shelters[i].score));
+        Shelter *shelterPtr = &shelters[i];
+
+        printf("\n%d. %s\n", i + 1, (*shelterPtr).name);
+        printf("Score : %.2f\n", (*shelterPtr).score);
+        printf("Status: %s\n", getStatus((*shelterPtr).score));
     }
 }
-
 
 int main() {
     int choice;
