@@ -17,75 +17,79 @@ typedef struct{
     int capacity;
     int occupancy;
     int accessibility;
-    int structuralsafety;
-    int medicalfacility;
-    int resourceavailability;
+    int structuralSafety;
+    int medicalFacility;
+    int resourceAvailability;
     int elevation;
     float score;
 } Shelter;
 
 Shelter shelters[MAX_SHELTERS];
 int shelterCount = 0;
-DisasterType selectDisaster = NONE;
+DisasterType selectedDisaster = NONE;
 
 void addShelter() {
-    if (shelterCount >= MAX_SHELTERS) {
+ if (shelterCount >= MAX_SHELTERS) {
         printf("\nShelter storage is full!\n");
         return;
     }
 
-    printf("==== ADD SHELTER ====\n");
+    Shelter *shelterPtr = &shelters[shelterCount];
+
+    printf("\n=== ADD SHELTER ===\n");
 
     printf("Shelter name: ");
-    scanf(" %[^\n]", shelters[shelterCount].name);
+    scanf(" %[^\n]", (*shelterPtr).name);
 
     printf("Capacity: ");
-    scanf("%d", &shelters[shelterCount].capacity);
+    scanf("%d", &(*shelterPtr).capacity);
 
     printf("Current occupancy: ");
-    scanf("%d", &shelters[shelterCount].occupancy);
+    scanf("%d", &(*shelterPtr).occupancy);
 
-    printf("Accessibility score [0-100]: ");
-    scanf("%d", &shelters[shelterCount].accessibility);
+    printf("Accessibility score (0-100): ");
+    scanf("%d", &(*shelterPtr).accessibility);
 
-    printf("Structural safety score [0-100]: ");
-    scanf("%d", &shelters[shelterCount].structuralsafety);
+    printf("Structural safety score (0-100): ");
+    scanf("%d", &(*shelterPtr).structuralSafety);
 
-    printf("Medical facility available? [1 = Yes / 0 = No]: ");
-    scanf("%d", &shelters[shelterCount].medicalfacility);
+    printf("Medical facility available? (1 = Yes, 0 = No): ");
+    scanf("%d", &(*shelterPtr).medicalFacility);
 
-    printf("Resource availability score [0-100]: ");
-    scanf("%d", &shelters[shelterCount].resourceavailability);
+    printf("Resource availability score (0-100): ");
+    scanf("%d", &(*shelterPtr).resourceAvailability);
 
     printf("Elevation level in meters: ");
-    scanf("%d", &shelters[shelterCount].elevation);
+    scanf("%d", &(*shelterPtr).elevation);
 
-    shelters[shelterCount].score = 0;
+    (*shelterPtr).score = 0;
     shelterCount++;
 
     printf("\nShelter successfully added!\n");
+
 }
 
 void displayShelters() {
-  if (shelterCount == 0) {
+    if (shelterCount == 0) {
         printf("\nNo shelter data available.\n");
         return;
     }
 
-    printf("\n==== SHELTER LIST ====\n");
+    printf("\n=== SHELTER LIST ===\n");
 
     for (int i = 0; i < shelterCount; i++) {
-        int remaining = shelters[i].capacity - shelters[i].occupancy;
+        Shelter *shelterPtr = &shelters[i];
+        int remaining = (*shelterPtr).capacity - (*shelterPtr).occupancy;
 
-        printf("\n[%d] %s\n", i + 1, shelters[i].name);
-        printf("Capacity              : %d\n", shelters[i].capacity);
-        printf("Occupancy             : %d\n", shelters[i].occupancy);
+        printf("\n[%d] %s\n", i + 1, (*shelterPtr).name);
+        printf("Capacity              : %d\n", (*shelterPtr).capacity);
+        printf("Occupancy             : %d\n", (*shelterPtr).occupancy);
         printf("Remaining Capacity    : %d\n", remaining);
-        printf("Accessibility         : %d/100\n", shelters[i].accessibility);
-        printf("Structural Safety     : %d/100\n", shelters[i].structuralsafety);
-        printf("Medical Facility      : %s\n", shelters[i].medicalfacility ? "Available" : "Not Available");
-        printf("Resource Availability : %d/100\n", shelters[i].resourceavailability);
-        printf("Elevation             : %d m\n", shelters[i].elevation);
+        printf("Accessibility         : %d/100\n", (*shelterPtr).accessibility);
+        printf("Structural Safety     : %d/100\n", (*shelterPtr).structuralSafety);
+        printf("Medical Facility      : %s\n", (*shelterPtr).medicalFacility ? "Available" : "Not Available");
+        printf("Resource Availability : %d/100\n", (*shelterPtr).resourceAvailability);
+        printf("Elevation             : %d m\n", (*shelterPtr).elevation);
     }
 }
 
