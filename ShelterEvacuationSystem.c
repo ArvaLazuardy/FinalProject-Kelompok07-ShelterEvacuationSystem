@@ -3,6 +3,8 @@
 
 #define MAX_SHELTERS 100
 
+// Bagian Jovan
+//-----------------------------------------------------
 typedef enum{
     NONE = 0,
     FLOOD = 1,
@@ -29,7 +31,7 @@ int shelterCount = 0;
 DisasterType selectedDisaster = NONE;
 
 void addShelter() {
- if (shelterCount >= MAX_SHELTERS) {
+    if (shelterCount >= MAX_SHELTERS) {
         printf("\nShelter storage is full!\n");
         return;
     }
@@ -93,6 +95,9 @@ void displayShelters() {
     }
 }
 
+//-----------------------------------------------------
+// Bagian Arva
+//-----------------------------------------------------
 void selectDisasterType() {
     int choice;
 
@@ -228,7 +233,6 @@ void printScoreBreakdown(Shelter *shelterPtr) {
     printf("Final Score = %.2f\n", (*shelterPtr).score);
 }
 
-
 void calculateBestRecommendation() {
     if (shelterCount == 0) {
         printf("\nNo shelter data available.\n");
@@ -258,6 +262,9 @@ void calculateBestRecommendation() {
 
     printScoreBreakdown(bestShelter);
 }
+
+//-----------------------------------------------------
+// Bagian Sentanu
 //-----------------------------------------------------
 const char* getStatus(float score) {
     if (score >= 80) {
@@ -313,6 +320,7 @@ void showShelterRanking() {
     }
 }
 
+// Bagian Arva
 int main() {
     int choice;
 
