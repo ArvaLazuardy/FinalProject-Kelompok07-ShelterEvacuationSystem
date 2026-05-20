@@ -103,6 +103,36 @@ void selectDisasterType() {
     printf("4. Tornado\n");
     printf("Choice: ");
     scanf("%d", &choice);
+
+    if (choice >= 1 && choice <= 4) {
+        selectedDisaster = (DisasterType) choice;
+        printf("Disaster type selected successfully!\n");
+    } else {
+        printf("Invalid disaster type.\n");
+    }
+}
+
+float getRemainingCapacityScore(Shelter *shelterPtr) {
+    if ((*shelterPtr).capacity <= 0) return 0;
+
+    int remaining = (*shelterPtr).capacity - (*shelterPtr).occupancy;
+    if (remaining < 0) remaining = 0;
+
+    return ((float) remaining / (*shelterPtr).capacity) * 100;
+}
+
+float getElevationScore(Shelter *shelterPtr) {
+    if ((*shelterPtr).elevation >= 30) return 100;
+    if ((*shelterPtr).elevation <= 0) return 0;
+
+    return ((float) (*shelterPtr).elevation / 30) * 100;
+}
+
+float getElevationScore(Shelter *shelterPtr) {
+    if ((*shelterPtr).elevation >= 30) return 100;
+    if ((*shelterPtr).elevation <= 0) return 0;
+
+    return ((float) (*shelterPtr).elevation / 30) * 100;
 }
 
 void calculateBestRecommendation() {
