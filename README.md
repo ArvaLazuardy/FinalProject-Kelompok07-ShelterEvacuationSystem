@@ -1,8 +1,8 @@
 # FinalProject-Kelompok07-ShelterEvacuationPrioritySystem
 
-=====================================================
+
           README PEMBAGIAN
-=====================================================
+
 
 - Arva Lazuardy Tristrian (2506644564):
   Logika Scoring & Sistem Rekomendasi, Perhitungan Kriteria Bencana, Logika Pengambilan Keputusan, serta Integrasi Alur Utama Program.
