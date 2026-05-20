@@ -128,12 +128,46 @@ float getElevationScore(Shelter *shelterPtr) {
     return ((float) (*shelterPtr).elevation / 30) * 100;
 }
 
-float getElevationScore(Shelter *shelterPtr) {
-    if ((*shelterPtr).elevation >= 30) return 100;
-    if ((*shelterPtr).elevation <= 0) return 0;
+float calculateScore(Shelter *shelterPtr) {
+    float remainingCapacity = getRemainingCapacityScore(shelterPtr);
+    float medical = (*shelterPtr).medicalFacility ? 100 : 0;
+    float elevationScore = getElevationScore(shelterPtr);
 
-    return ((float) (*shelterPtr).elevation / 30) * 100;
+    switch (selectedDisaster) {
+        case FLOOD:
+            return (elevationScore * 0.30) +
+                   ((*shelterPtr).resourceAvailability * 0.20) +
+                   (remainingCapacity * 0.20) +
+                   ((*shelterPtr).accessibility * 0.15) +
+                   (medical * 0.10) +
+                   ((*shelterPtr).structuralSafety * 0.05);
+
+        case EARTHQUAKE:
+            return ((*shelterPtr).structuralSafety * 0.35) +
+                   (medical * 0.20) +
+                   (remainingCapacity * 0.20) +
+                   ((*shelterPtr).resourceAvailability * 0.15) +
+                   ((*shelterPtr).accessibility * 0.10);
+
+        case FIRE:
+            return ((*shelterPtr).accessibility * 0.30) +
+                   ((*shelterPtr).structuralSafety * 0.25) +
+                   (medical * 0.20) +
+                   (remainingCapacity * 0.15) +
+                   ((*shelterPtr).resourceAvailability * 0.10);
+
+        case TORNADO:
+            return ((*shelterPtr).structuralSafety * 0.40) +
+                   (remainingCapacity * 0.20) +
+                   ((*shelterPtr).resourceAvailability * 0.15) +
+                   (medical * 0.15) +
+                   ((*shelterPtr).accessibility * 0.10);
+
+        default:
+            return 0;
+    }
 }
+
 
 void calculateBestRecommendation() {
     
