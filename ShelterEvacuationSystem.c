@@ -175,6 +175,60 @@ void calculateAllScores() {
     }
 }
 
+void printScoreBreakdown(Shelter *shelterPtr) {
+    float remainingCapacity = getRemainingCapacityScore(shelterPtr);
+    float medical = (*shelterPtr).medicalFacility ? 100 : 0;
+    float elevationScore = getElevationScore(shelterPtr);
+
+    printf("\n=== SCORE BREAKDOWN ===\n");
+
+    switch (selectedDisaster) {
+        case FLOOD:
+            printf("Flood Score Formula:\n");
+            printf("(Elevation %.2f x 0.30) = %.2f\n", elevationScore, elevationScore * 0.30);
+            printf("(Resources %d x 0.20) = %.2f\n", (*shelterPtr).resourceAvailability, (*shelterPtr).resourceAvailability * 0.20);
+            printf("(Remaining Capacity %.2f x 0.20) = %.2f\n", remainingCapacity, remainingCapacity * 0.20);
+            printf("(Accessibility %d x 0.15) = %.2f\n", (*shelterPtr).accessibility, (*shelterPtr).accessibility * 0.15);
+            printf("(Medical Facility %.2f x 0.10) = %.2f\n", medical, medical * 0.10);
+            printf("(Structural Safety %d x 0.05) = %.2f\n", (*shelterPtr).structuralSafety, (*shelterPtr).structuralSafety * 0.05);
+            break;
+
+        case EARTHQUAKE:
+            printf("Earthquake Score Formula:\n");
+            printf("(Structural Safety %d x 0.35) = %.2f\n", (*shelterPtr).structuralSafety, (*shelterPtr).structuralSafety * 0.35);
+            printf("(Medical Facility %.2f x 0.20) = %.2f\n", medical, medical * 0.20);
+            printf("(Remaining Capacity %.2f x 0.20) = %.2f\n", remainingCapacity, remainingCapacity * 0.20);
+            printf("(Resources %d x 0.15) = %.2f\n", (*shelterPtr).resourceAvailability, (*shelterPtr).resourceAvailability * 0.15);
+            printf("(Accessibility %d x 0.10) = %.2f\n", (*shelterPtr).accessibility, (*shelterPtr).accessibility * 0.10);
+            break;
+
+        case FIRE:
+            printf("Fire Score Formula:\n");
+            printf("(Accessibility %d x 0.30) = %.2f\n", (*shelterPtr).accessibility, (*shelterPtr).accessibility * 0.30);
+            printf("(Structural Safety %d x 0.25) = %.2f\n", (*shelterPtr).structuralSafety, (*shelterPtr).structuralSafety * 0.25);
+            printf("(Medical Facility %.2f x 0.20) = %.2f\n", medical, medical * 0.20);
+            printf("(Remaining Capacity %.2f x 0.15) = %.2f\n", remainingCapacity, remainingCapacity * 0.15);
+            printf("(Resources %d x 0.10) = %.2f\n", (*shelterPtr).resourceAvailability, (*shelterPtr).resourceAvailability * 0.10);
+            break;
+
+        case TORNADO:
+            printf("Tornado Score Formula:\n");
+            printf("(Structural Safety %d x 0.40) = %.2f\n", (*shelterPtr).structuralSafety, (*shelterPtr).structuralSafety * 0.40);
+            printf("(Remaining Capacity %.2f x 0.20) = %.2f\n", remainingCapacity, remainingCapacity * 0.20);
+            printf("(Resources %d x 0.15) = %.2f\n", (*shelterPtr).resourceAvailability, (*shelterPtr).resourceAvailability * 0.15);
+            printf("(Medical Facility %.2f x 0.15) = %.2f\n", medical, medical * 0.15);
+            printf("(Accessibility %d x 0.10) = %.2f\n", (*shelterPtr).accessibility, (*shelterPtr).accessibility * 0.10);
+            break;
+
+        default:
+            printf("No disaster type selected.\n");
+    }
+
+    printf("--------------------------------\n");
+    printf("Final Score = %.2f\n", (*shelterPtr).score);
+}
+
+
 void calculateBestRecommendation() {
     if (shelterCount == 0) {
         printf("\nNo shelter data available.\n");
