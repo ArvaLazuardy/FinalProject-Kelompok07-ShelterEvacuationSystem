@@ -94,7 +94,15 @@ void displayShelters() {
 }
 
 void selectDisasterType() {
+    int choice;
 
+    printf("\n=== SELECT DISASTER TYPE ===\n");
+    printf("1. Flood\n");
+    printf("2. Earthquake\n");
+    printf("3. Fire\n");
+    printf("4. Tornado\n");
+    printf("Choice: ");
+    scanf("%d", &choice);
 }
 
 void calculateBestRecommendation() {
