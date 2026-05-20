@@ -15,11 +15,63 @@ void selectDisasterType() {
 }
 
 void calculateBestRecommendation() {
+    
+
+
+
+    const char* getStatus(float score) {
+        if (score >= 80) {
+            return "Recommended";
+        
+        } else if (score >= 60) {
+            return "Safe";
+        
+        } else if (score >= 40) {
+            return "Risky";
+        
+        } else {
+            return "Not Recommended";
+        }
+    }
 
 }
 
-void showShelterRanking() {
+void sortSheltersByScore() {
+    Shelter temp;
 
+    for (int i = 0; i < shelterCount - 1; i++) {
+        for (int j = 0; j < shelterCount - i - 1; j++) {
+            if (shelters[j].score < shelters[j + 1].score) {
+                temp = shelters[j];
+                shelters[j] = shelters[j + 1];
+                shelters[j + 1] = temp;
+            }
+        }
+    }
+}
+
+
+void showShelterRanking() {
+    if (shelterCount == 0) {
+        printf("\nNo shelter data available.\n");
+        return;
+    }
+
+    if (selectedDisaster == NONE) {
+        printf("\nPlease select a disaster type first.\n");
+        return;
+    }
+
+    calculateAllScores();
+    sortSheltersByScore();
+
+    printf("\n=== SHELTER RANKING ===\n");
+
+    for (int i = 0; i < shelterCount; i++) {
+        printf("\n%d. %s\n", i + 1, shelters[i].name);
+        printf("Score : %.2f\n", shelters[i].score);
+        printf("Status: %s\n", getStatus(shelters[i].score));
+    }
 }
 
 
