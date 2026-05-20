@@ -38,7 +38,7 @@ void addShelter() {
 
     Shelter *shelterPtr = &shelters[shelterCount];
 
-    printf("\n=== ADD SHELTER ===\n");
+    printf("\n===== ADD SHELTER =====\n");
 
     printf("Shelter name: ");
     scanf(" %[^\n]", (*shelterPtr).name);
@@ -49,16 +49,16 @@ void addShelter() {
     printf("Current occupancy: ");
     scanf("%d", &(*shelterPtr).occupancy);
 
-    printf("Accessibility score (0-100): ");
+    printf("Accessibility score [0-100]: ");
     scanf("%d", &(*shelterPtr).accessibility);
 
-    printf("Structural safety score (0-100): ");
+    printf("Structural safety score [0-100]: ");
     scanf("%d", &(*shelterPtr).structuralSafety);
 
-    printf("Medical facility available? (1 = Yes, 0 = No): ");
+    printf("Medical facility available? [1 = Yes / 0 = No]: ");
     scanf("%d", &(*shelterPtr).medicalFacility);
 
-    printf("Resource availability score (0-100): ");
+    printf("Resource availability score [0-100]: ");
     scanf("%d", &(*shelterPtr).resourceAvailability);
 
     printf("Elevation level in meters: ");
@@ -68,7 +68,6 @@ void addShelter() {
     shelterCount++;
 
     printf("\nShelter successfully added!\n");
-
 }
 
 void displayShelters() {
@@ -111,7 +110,88 @@ void selectDisasterType() {
 
     if (choice >= 1 && choice <= 4) {
         selectedDisaster = (DisasterType) choice;
-        printf("Disaster type selected successfully!\n");
+        printf("\nDisaster type selected successfully!\n\n");
+        
+        switch (selectedDisaster) {
+            case FLOOD:
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⢁⡈⠻⣦⣀⠺⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠋⣀⣴⣿⣿⣦⣀⠙⢦⡈⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⣠⠴⠋⣠⣾⣿⣿⣿⣿⣿⣿⣷⣄⠙⠦⣄⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀␐⠚⠁⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⠈⠓⠂⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠉⣉⡉⢹⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⡿⠇⠘⠿⣿⣿⣿⣿⠿⠛⠻⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⣀⣤⠶⠟⢷⣦⡉⠛⢀⣴⠾⠻⣶⣌⠙⠋⣡⡶⠟⢷⣦⡀⠀⢀⣠⡴⠀⠀\n");
+                printf("⠀⠈⠋⠁⠀⠀⠀⠈⠛⠛⠛⠁⠀⠀⠀⠙⠛⠛⠋⠀⠀⠀⠈⠛⠛⠛⠁⠀⠀⠀\n");
+                printf("⠀⠀⣠⡶⠟⠛⠳⣦⣀⢀⣠⡶⠟⠛⢶⣄⡀⣀⣴⠾⠛⠳⣦⣀⠀⣀⣴⠾⠀⠀\n");
+                printf("⠀⠀⠁⠀⠀⠀⠀⠈⠉⠉⠉⠀⠀⠀⠀⠉⠉⠉⠁⠀⠀⠀⠈⠉⠉⠉⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                break;
+                
+            case EARTHQUAKE:
+                printf("⠀⠀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⠿⠿⠿⠿⠷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣶⣾⣿⣷⣶⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣏⣁⣀⣈⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⠿⠿⠿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣶⣶⡶⠀⢀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⣀⣀⣀⣀⣀⠀⣿⣿⣿⣿⣿⣿⣯⣶⣿⣿⣿⣿⣿⣷⣦⠀⢀⣀⣀⣀⣀⣀⠀\n");
+                printf("⠀⠉⠉⠉⠉⠉⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠉⠉⠉⠉⠉⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⢠⣈⡉⠙⠛⠛⠻⠿⠿⠿⠿⠟⠛⠛⢉⣀⡄⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⣄⣀⣤⣴⣀⡀⠈⠛⠛⠛⠁⠀⠶⠶⠶⠶⠶⠶⠾⠛⠛⠉⠁⣀⣴⣤⣤⡀⠀\n");
+                printf("⠀⠉⠋⠉⠉⠛⠻⠿⣷⣶⣶⣶⣶⣶⣤⣤⣴⣶⣶⣶⣶⡶⠿⠟⠛⠋⠁⠈⠻⠀\n");
+                printf("⠀⠀⠀⠀⠀⢤⣶⣿⣿⣟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠙⢻⣿⣷⣦⣤⡀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⢀⣀⣤⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⠟⠋⠀⠀⠀⠀⠀\n");
+                printf("⠀⣶⣾⣿⣿⣿⣿⣿⣿⣿⠋⠙⢷⣦⡀⠀⠀⠈⠻⢿⣿⣿⣿⣶⣤⡀⠀⠀⠀⠀\n");
+                printf("⠀⠛⠛⠛⠛⠛⠛⠛⠛⠁⠀⠀⠀⠉⠛⠂⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠓⠂⠀\n");
+                break;
+                
+            case FIRE:
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣖⣤⣶⣶⣿⠟⠉⠉⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⣠⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣷⣶⣶⣦⣤⣀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⢰⣿⣶⣾⣿⣿⣿⣿⣿⣿⡿⠿⣿⣿⣿⣿⣯⣍⠁⠀⠀⠀\n");
+                printf("⠀⠀⠀⠹⣿⠻⡅⠀⣠⠉⣹⣿⠿⠛⠃⠀⢹⣿⣿⣿⣿⣷⣄⠀⠀\n");
+                printf("⠀⠀⠀⢰⣄⣠⣴⠟⠁⢀⣿⠁⠀⠀⠀⣠⣿⣿⣿⣿⣿⣏⠉⠓⠀\n");
+                printf("⠀⠀⠀⠰⢿⡿⠋␐⠿⣿⡿⣋⣤⣶⣿⣿⣿⣿⠏⣼⣿⣿⣇⠀⠀\n");
+                printf("⠀⠀⠀⢀⣠⣴⣶⠞⣠⣶⣿⣿⣿⣿⣿⡿⠋⣡⣾⣿⡿⠈⢿⠀⠀\n");
+                printf("⠀⠀⢈⣽⣿⠏⣰⣿⣿⣿⣿⣿⠟⠉⠀⠰⠚⠋⢁⣿⠃⠀⠀⢸⠀\n");
+                printf("⠀⢠⣿⣿⢃⣼⣿⣿⣿⣿⠏⠀⡀⠀⠀⠀⠀⠀⠞⠁⠀⠀⢠⣿⠁\n");
+                printf("⠠⠟⣾⡏⣼⣿⣿⣿⣿⠃⣠⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⡟⠀\n");
+                printf("⠀⠀⢹⡇⣿⣿⣿⣿⣿⠀⣿⣿⣷⣄⣀⠀⢀⣀⣠⣴⣿⣿⠟⠀⠀\n");
+                printf("⠀⠀⠀⠃⢻⣿⣿⣿⣿⣆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣁⣤⡶⠃\n");
+                printf("⠀⠀⠀⠀⠀⢯⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠁⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⢿⣿⣿⣿⣿⣿⣷⡶⠶⠂⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                break;
+                
+            case TORNADO:
+                printf("⠀     ⠀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⢀⣤⣶⣿⣿⣿⣿⡿⠿⠭⠤⠀⠀⠀⠈⠉⠉⠙⠛⠷⣦⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⣾⣿⣿⠟⠋⠁⠀⠀⠀⠒⠒⠲⠶⠶⢶⣶⣶⣤⣤⣤⣿⠀⠀⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⢻⣿⣾⣿⣿⣿⣿⡿⠶⠶⠤⠤⠀⠀⠀⠀⠉⠛⢿⣿⣿⣿⣦⡀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠘⣿⣿⡿⠋⠉⣀⣀⣠⣤⣤⣤⣤⣤⡄⠀⠀⠀⠀⣿⣿⣿⡿⠃⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⢹⣿⣴⣶⡿⠛⠋⠉⣁⣀⣀⣀⣀⣀⣀⣀⣀⠰⣿⠋⠁⠀⠀ _____ ⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⣾⣿⣿⣏⠀⠀⠀⠀⠈⠉⠉⣉⣉⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀(_____(_[h,⠀\n");
+                printf("⠀⠀⠀⠀⠉⠛⠿⢿⣦⡀⠀⠀⠀⠈⠉⠉⠉⠉⢉⠉⠛⠻⣿⡄⠀⠀⠀⠀oo  oo  o⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠀⢈⣻⣶⣶⡶⠿⠟⠛⠛⠛⠛⠛⠛⠛⢿⣿⣶⣦⠀⠀⠀⠀\n");
+                printf("⠀⠀⠀⠀⠀⠀⠀⠘⠛⠛⠻⠿⣦⡀⠀⠀⠀⣀⣀⡀⠠⣤⣸⡟⠋⠉⠀⠀⠀,,\n");
+                printf("⠀ __o⠀⠀⠀⠀⠀⠀⠀⣀⣈⣻⣦⣤⣤⣄⣉⣛⣿⣿⣿⣷⣄⠀⠀⠀~\\/~----~⠀\n");
+                printf("⠀⠀ /\\⠀⠀⠀⠀⠂⠈⠉⠉⠉⠉⠙⢿⣍⠛⠛⠻⠿⣿⣿⣿⣿⣷⠀⠀⠀ /|--w\\ \n");
+                printf("⠀_/|⠀⠀⠀⠀⠀_--_ ⠀⠀⠀⠀⠀⠻⣧⠀⠀⠀⢀⣿⣿⣿⣿⠀⠀⠀_____ ⠀\n");
+                printf("'  /⠀⠀   `o--o'⠀⠀⠀⠀⠀⠀⠹⣇⠀⢀⣼⠿⠟⠛⠉⠀/\\`````\\ ⠀\n");
+                printf("⠀⠀ `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠀⠚⠃       /  \\
+`````\\  \n");
+                printf("                      ⠛⠀         |[] | [] |\n");
+                break;
+                
+            default:
+                break;
+        }
+
     } else {
         printf("Invalid disaster type.\n");
     }
@@ -355,7 +435,7 @@ int main() {
                 showShelterRanking();
                 break;
             case 6:
-                printf("\nExiting program. Stay safe!\n");
+                printf("\nExiting program. Be Safe! #Setiawinner\n");
                 break;
             default:
                 printf("\nInvalid choice. Please try again.\n");
